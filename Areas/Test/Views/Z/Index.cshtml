@@ -1,0 +1,47 @@
+﻿@{
+    Layout = null;
+}
+
+@model WebApplication1.Areas.Test.Controllers.ZModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>View</title>
+</head>
+<body>
+    <div>
+        <h4>ZModel</h4>
+        <hr />
+        <dl class="dl-horizontal">
+        </dl>
+
+        @using (Html.BeginForm("Update", "Z", FormMethod.Post))
+        {
+
+            <h1>Id = @Html.DisplayTextFor(m => m.Id)</h1>
+
+            @Html.HiddenFor(m => m.Id)
+
+            <table>
+                @for (int x = 0; x < Model.Items.Count; x++)
+                {
+                    <tr>
+                        <td>
+                            @Html.LabelFor(m => Model.Items[x].Name)
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(m => Model.Items[x].Selected)
+                        </td>
+                    </tr>
+                }
+            </table>
+
+            <input type="submit" value="Submit Data" id="btnSubmit" />
+
+        }
+    </div>
+</body>
+</html>
